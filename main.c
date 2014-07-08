@@ -12,6 +12,26 @@ int expo(float a, int n){
     return e;
 }
 
+int clean_stdin()
+{
+    while (getchar()!='\n');
+    return 1;
+}
+
+int getDim(){ //demande a l'utilisateur un entier positif comme dimension de la matrice
+    int dim;
+    int essaie = 0;
+    do{
+        if (essaie == 0){
+            printf("\nEnter la dimension de la matrice : ");
+            essaie++;
+        }else{
+            printf("\nVous devez entrer un entier positif\nEnter la dimension de la matrice : ");
+        }
+    }while (((scanf("%d", &dim)!=1) && clean_stdin()) || dim < 0);
+    return dim;
+}
+
 // Fonction calculant le determinant
 float determinant(int dim, float M[dim][dim]){
     int colMatrice, j;
@@ -58,16 +78,16 @@ int main(void) {
         printf("\n");
         for(i = 0; i < n; i++){
             for (j = 0; j < n; j++){
-                printf("Entrer l'element de %d ligne et de la %d colonne : ", i, j);
+                printf("Entrer l'element de %d ligne et de la %d colonne : ", i + 1, j + 1);
                 scanf("%f", &A[i][j]);
             }
         }
         printf("\nLe determinant de votre matrice est : %.2f", determinant(n, A));
 
         printf("\n\n======================================================================.\n");
-        printf("\nTaper q pour quiter le programme.\n");
-        printf("Taper n'importe quoi pour recommencer.\n");
-        printf("\nVoulez-vous continuer : ");
+        printf("\nEntrer q pour quiter le programme.\n");
+        printf("Entrer n'importe quoi pour recommencer.\n");
+        printf("\nVoulez-vous recommencer : ");
         clean_stdin();
         scanf("%d", &choix);
         clean_stdin();
@@ -79,23 +99,3 @@ int main(void) {
     return 0;
 }
 
-
-int getDim(){ //demande a l'utilisateur un entier positif comme dimension de la matrice
-    int dim;
-    int essaie = 0;
-    do{
-        if (essaie == 0){
-            printf("\nEnter la dimension de la matrice : ");
-            essaie++;
-        }else{
-            printf("\nVous devez entrer un entier positif\nEnter la dimension de la matrice : ");
-        }
-    }while (((scanf("%d", &dim)!=1) && clean_stdin()) || dim < 0);
-    return dim;
-}
-
-int clean_stdin()
-{
-    while (getchar()!='\n');
-    return 1;
-}
