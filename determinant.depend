@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1403580904 source:c:\users\alain\onedrive\c\determinant\main.c
+	<stdio.h>
+	<stdlib.h>
+
